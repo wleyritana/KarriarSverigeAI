@@ -1,0 +1,61 @@
+body{background:black;color:#00ff88;font-family:monospace;padding:40px}
+textarea,input,select{width:100%;margin-bottom:10px;background:#001a00;color:#00ff88}
+button{background:#00ff88;color:black;padding:10px;border:none;margin:10px 0}
+.card{background:#001a00;padding:20px;margin:20px 0;border:1px solid #00ff88}
+
+.bar{height:30px;border:1px solid #00ff88}
+.bar.green{background:#004400}
+.bar.amber{background:#664400}
+.bar.red{background:#440000}
+
+.fill{height:100%;text-align:center;color:white;font-weight:bold}
+
+pre{background:#001a00;padding:15px;white-space:pre-wrap}
+
+.fill{transition: width 0.9s ease-out; width:0%;}
+
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+textarea,input,select{
+    padding:10px;
+    font-size:14px;
+    border-radius:6px;
+}
+
+button{
+    width:100%;
+    font-size:16px;
+    border-radius:6px;
+}
+
+@media (max-width:768px){
+    body{
+        padding:20px;
+        font-size:14px;
+    }
+
+    h1{
+        font-size:20px;
+        text-align:center;
+    }
+
+    .card{
+        padding:15px;
+    }
+
+    textarea{
+        min-height:120px;
+    }
+
+    .bar{
+        height:24px;
+    }
+
+    .fill{
+        font-size:12px;
+    }
+}
