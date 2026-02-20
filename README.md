@@ -1,218 +1,167 @@
 # KarriarSverigeAI
 
-# AI Job Hunt v5 -- Tvåspråkig Intelligensplattform (Standard: Svenska)
+## AI Job Hunt v5.4 -- Mobilanpassad Intelligensplattform
 
-AI Job Hunt v5 är en fullstack AI‑plattform för karriärintelligens som
-analyserar och optimerar en kandidats CV mot en jobbannons med hjälp av
-rekryterarsimulering, strategisk modellering och psykologiska insikter.
+AI Job Hunt v5.4 är en fullständig AI-driven karriärintelligensplattform
+som analyserar, optimerar och strategiskt positionerar en kandidats CV
+mot en specifik jobbannons.
 
-Denna förbättrade version inkluderar fullständigt tvåspråkigt gränssnitt
-(Svenska som standard), executive‑dashboard och produktionsklar
-konfiguration för driftsättning.
+Denna version inkluderar:
 
-------------------------------------------------------------------------
-
-## 🌍 Språksystem
-
-Standardspråk: **Svenska**
-
--   Alla UI‑texter växlar dynamiskt mellan svenska och engelska\
--   AI‑analysen följer valt språk\
--   Språk sparas i session\
--   Ingen duplicering av templates (översättnings‑dictionary används)
+-   Full mobilanpassning
+-   Alla moduler (1--8) korrekt renderade
+-   Företagskultur + medarbetarrecensioner
+-   Kollapsbara intelligenssektioner
+-   Animerade och färgkodade poängstaplar
+-   Svenska som standardspråk (med engelskt stöd)
+-   Railway-redo produktionstruktur
 
 ------------------------------------------------------------------------
 
-## Kärnmoduler (1--8)
+## Funktioner
 
-1.  Rekryterarens Matchningsanalys\
-2.  CV‑optimering (X--Y--Z‑modell)\
-3.  ATS‑analys\
-4.  ATS‑optimerat CV (enkolumnsformat)\
-5.  Teknisk intervjuförberedelse\
-6.  Företagskultur: Verklighet vs Bild\
-7.  HR / Beteendebaserad intervjuförberedelse\
-8.  Kandidatens strategiska frågor
+### Kärnmoduler (1--8)
 
-------------------------------------------------------------------------
+1.  Rekryterarens matchningsanalys\
+2.  CV-optimering\
+3.  ATS-analys\
+4.  ATS-optimerat CV\
+5.  Intervjuförberedelse (Teknisk + HR + Strategisk)\
+6.  Företagskultur -- Verklighet vs Bild\
+7.  Rekryterarens psykologisimulering\
+8.  Anställningsbarhetsanalys
 
-## Avancerade Intelligensförbättringar
+### Förbättrad Intelligens
 
-### Kravintelligens‑motor
-
--   Identifiering av kärnkompetenser\
--   Dolda signaler i jobbannons\
--   Senioritetsförväntningar\
--   Analys av affärspåverkan\
--   Bedömning av matchningsstyrka
-
-### Anställningsbarhetspoäng
-
-Viktad rekryterarbaserad bedömning (0--100): - Kompetensmatchning\
-- Senioritetsanpassning\
-- Tydlighet i affärsresultat\
-- ATS‑beredskap\
-- Strategisk positionering
-
-### Rekryterarens Psykologisimulering
-
--   30‑sekunders första intryck\
--   Tveksamhetsfaktorer\
--   Nyfikenhetssignaler\
--   Upplevd senioritetsnivå\
--   Emotionell anställningsbenägenhet
+-   Kravintelligens (djupanalys av jobbkrav)
+-   Hireability-score (0--100)
+-   Rekryterarens 30-sekunders intryck
+-   Strategisk positioneringsanalys
 
 ------------------------------------------------------------------------
 
-## Executive Dashboard
+## Poängsystem
 
--   Visuell stapel för Anställningsbarhetspoäng\
--   Visuell stapel för Matchningspoäng\
--   Matrix‑inspirerat UI\
--   Strukturerad intelligensuppdelning\
--   Förberedd för kollapsbara sektioner
+Färgkodade och animerade staplar:
 
-------------------------------------------------------------------------
+-   Under 70% → Röd (Hög risk)\
+-   70--84% → Amber (Behöver förbättras)\
+-   85%+ → Grön (Stark matchning)
 
-## Nedladdningsfunktioner
-
-Efter analys:
-
--   `/download` → Fullständig intelligensrapport (DOCX)\
--   `/download_cv` → Förbättrat CV (ren text, utan emotikoner)
+Staplarna animeras från 0% upp till slutpoängen vid laddning.
 
 ------------------------------------------------------------------------
 
-## Produktionsfunktioner
+## Mobilanpassning
 
--   Svenska som standard\
--   Möjlighet att växla till engelska\
--   Rate limiting (3 förfrågningar/timme per IP)\
--   Ingen databasberoende\
--   Sessionsbaserad rapportlagring\
--   Klar för Railway‑deployment\
--   Hälsokontroll: `/health`
+-   Responsiv layout
+-   Touch-vänliga knappar
+-   Anpassade textfält
+-   Skalbara kort och sektioner
+-   Matrix-tema (mörk design)
+
+Fungerar på: - Mobil - Surfplatta - Desktop
+
+------------------------------------------------------------------------
+
+## Språksystem
+
+Standard: Svenska
+
+-   Alla UI-texter växlar mellan svenska och engelska
+-   AI-analysen följer valt språk
+-   Sessionsbaserad språkhantering
+-   Ingen duplicering av templates
+
+------------------------------------------------------------------------
+
+## Teknisk Arkitektur
+
+Backend: - Flask - OpenAI API - Flask-Limiter - python-docx - Gunicorn
+
+Frontend: - Jinja2 templates - Matrix CSS-tema - Kollapsbara sektioner -
+JavaScript-animationer
+
+Deployment: - Railway-redo - Procfile inkluderad - runtime.txt
+definierad
 
 ------------------------------------------------------------------------
 
 ## Projektstruktur
 
-    ai-job-hunt-v5-bilingual-default-sv/
-    │
-    ├── app.py
-    ├── agents.py
-    ├── openai_client.py
-    ├── report_generator.py
-    ├── translations.py
-    │
-    ├── templates/
-    │   ├── index.html
-    │   └── dashboard.html
-    │
-    ├── static/
-    │   └── styles.css
-    │
-    ├── requirements.txt
-    ├── Procfile
-    ├── runtime.txt
-    └── README.md
+ai-job-hunt-v5.4-mobile/ │ ├── app.py ├── agents.py ├── openai_client.py
+├── report_generator.py ├── translations.py │ ├── templates/ │ ├──
+index.html │ └── dashboard.html │ ├── static/ │ └── styles.css │ ├──
+requirements.txt ├── Procfile ├── runtime.txt └── README.md
 
 ------------------------------------------------------------------------
 
 ## Lokal Installation
 
-### 1. Skapa virtuell miljö
+1.  Skapa virtuell miljö
 
-``` bash
-python -m venv .venv
+python -m venv .venv\
 source .venv/bin/activate
-```
 
 Windows:
 
-``` bash
-.venv\Scripts\activate
-```
+.venv`\Scripts`{=tex}`\activate  `{=tex}
 
-### 2. Installera beroenden
+2.  Installera beroenden
 
-``` bash
 pip install -r requirements.txt
-```
 
-### 3. Skapa .env‑fil
+3.  Skapa .env-fil
 
-    OPENAI_API_KEY=din_api_nyckel
-    OPENAI_MODEL=gpt-4.1-mini
-    SECRET_KEY=byt_till_något_säkert
+OPENAI_API_KEY=din_api_nyckel\
+OPENAI_MODEL=gpt-4.1-mini\
+SECRET_KEY=byt_till_något_säkert
 
-### 4. Starta lokalt
+4.  Starta applikationen
 
-``` bash
 flask --app app run
-```
 
 Öppna:
 
-    http://127.0.0.1:5000
+http://127.0.0.1:5000
 
 ------------------------------------------------------------------------
 
-##  Railway‑driftsättning
+## Railway Deployment
 
 1.  Ladda upp projektet till GitHub\
-2.  Koppla Railway till repository\
+2.  Koppla repository till Railway\
 3.  Lägg till miljövariabler:
-    -   OPENAI_API_KEY\
+    -   OPENAI_API_KEY
     -   SECRET_KEY\
-4.  Publicera
+4.  Deploya
 
 Hälsokontroll:
 
-    /health
+/health
 
 ------------------------------------------------------------------------
 
-## Arkitekturflöde
+## Positionering
 
-Användarinmatning →\
-Matchningsanalys →\
-CV‑optimering →\
-ATS‑analys →\
-ATS‑optimerat CV →\
-Intervjupaket →\
-Kravintelligens →\
-Anställningsbarhetspoäng →\
-Psykologisimulering →\
-Executive Dashboard + Nedladdningar
+AI Job Hunt v5.4 är en:
 
-------------------------------------------------------------------------
+-   AI-driven karriärintelligensplattform\
+-   Rekryterarsimuleringsmotor\
+-   Strategiskt anställningsoptimeringssystem\
+-   SaaS-redo karriärverktyg
 
-##  Positionering
+Lämplig för:
 
-AI‑plattform för Karriärintelligens\
-Rekryterarsimuleringsmotor\
-Strategiskt Optimeringssystem för Anställning
-
-Lämplig för: - Individuella yrkespersoner\
-- Karriärcoacher\
-- Universitet\
-- HR‑rådgivning\
-- SaaS‑kommersialisering
-
-------------------------------------------------------------------------
-
-## Tekniska Anteckningar
-
--   OpenAI‑anrop centraliserade i `openai_client.py`\
--   Modulär promptarkitektur i `agents.py`\
--   UI‑lokalisering via `translations.py`\
--   DOCX‑generering i `report_generator.py`\
--   Stateless arkitektur (ingen databas)
+-   Professionella individer\
+-   Karriärcoacher\
+-   HR-rådgivning\
+-   Universitet\
+-   Kommersiell SaaS-lansering
 
 ------------------------------------------------------------------------
 
 ## Licens
 
 Intern eller kommersiell användning enligt konfiguration.\
-Lägg till en licensfil vid offentlig publicering.
+Lägg till separat licensfil vid offentlig publicering.
