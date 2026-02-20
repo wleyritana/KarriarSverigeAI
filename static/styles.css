@@ -1,8 +1,0 @@
-body{background:black;color:#00ff88;font-family:monospace;padding:40px}
-textarea,input,select{width:100%;margin-bottom:10px;background:#001a00;color:#00ff88}
-button{background:#00ff88;color:black;padding:10px;border:none;margin:10px 0}
-.card{background:#001a00;padding:20px;margin:20px 0;border:1px solid #00ff88}
-.bar{background:#002200;border:1px solid #00ff88;height:30px}
-.fill{background:#00ff88;height:100%;text-align:center;color:black;font-weight:bold}
-.fill.secondary{background:#00ffaa}
-pre{background:#001a00;padding:15px;white-space:pre-wrap}
