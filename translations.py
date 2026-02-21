@@ -1,6 +1,6 @@
 translations = {
     "en": {
-        "app_title": "AI Job Hunt v5.2 – Intelligence Platform",
+        "app_title": "Career Sweden AI",
         "run_analysis": "Run Full Intelligence Analysis",
         "cv_label": "Paste CV",
         "job_label": "Paste Job Description",
@@ -16,7 +16,7 @@ translations = {
         "run_again": "Run Again"
     },
     "sv": {
-        "app_title": "AI Job Hunt v5.2 – Intelligensplattform",
+        "app_title": "Karriar Sverige AI",
         "run_analysis": "Kör Fullständig Analys",
         "cv_label": "Klistra in CV",
         "job_label": "Klistra in Jobbannons",
