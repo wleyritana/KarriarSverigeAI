@@ -1,165 +1,172 @@
 # KarriarSverigeAI
 
-## AI Job Hunt v5.4 -- Mobilanpassad Intelligensplattform
+AI Job Hunting System --- Version 6 (Produktionsversion)
 
-AI Job Hunt v5.4 är en fullständig AI-driven karriärintelligensplattform
-som analyserar, optimerar och strategiskt positionerar en kandidats CV
-mot en specifik jobbannons.
+En AI-driven plattform för jobbsökningsoptimering byggd med Flask,
+OpenAI och PostgreSQL (Railway-redo).
 
-Denna version inkluderar:
-
--   Full mobilanpassning
--   Alla moduler (1--8) korrekt renderade
--   Företagskultur + medarbetarrecensioner
--   Kollapsbara intelligenssektioner
--   Animerade och färgkodade poängstaplar
--   Svenska som standardspråk (med engelskt stöd)
--   Railway-redo produktionstruktur
+Version 6 innehåller: - Full multi-agent-pipeline - Iterativ
+poängsättningsloop - ATS-simulering - Intervjuförberedelsemotor -
+Webbgränssnitt med autentisering - Analysdashboard -
+Produktionsdistribution via Railway
 
 ------------------------------------------------------------------------
 
-## Funktioner
+Översikt
 
-### Kärnmoduler (1--8)
+AI Job Hunting System simulerar den verkliga rekryteringsprocessen:
 
-1.  Rekryterarens matchningsanalys\
-2.  CV-optimering\
-3.  ATS-analys\
-4.  ATS-optimerat CV\
-5.  Intervjuförberedelse (Teknisk + HR + Strategisk)\
-6.  Företagskultur -- Verklighet vs Bild\
-7.  Rekryterarens psykologisimulering\
-8.  Anställningsbarhetsanalys
+1.  Applicant Tracking System (ATS)
+2.  Senior rekryterargranskning
+3.  Bedömning av rekryterande chef
+4.  HR- och kulturmatchning
+5.  Kandidatens strategiska beslutsstöd
 
-### Förbättrad Intelligens
-
--   Kravintelligens (djupanalys av jobbkrav)
--   Hireability-score (0--100)
--   Rekryterarens 30-sekunders intryck
--   Strategisk positioneringsanalys
+Systemet optimerar CV:n både för maskinläsbarhet och mänsklig
+trovärdighet.
 
 ------------------------------------------------------------------------
 
-## Poängsystem
+Kärnarkitektur (V6)
 
-Färgkodade och animerade staplar:
+Multi-agent-flöde
 
--   Under 70% → Röd (Hög risk)\
--   70--84% → Amber (Behöver förbättras)\
--   85%+ → Grön (Stark matchning)
-
-Staplarna animeras från 0% upp till slutpoängen vid laddning.
-
-------------------------------------------------------------------------
-
-## Mobilanpassning
-
--   Responsiv layout
--   Touch-vänliga knappar
--   Anpassade textfält
--   Skalbara kort och sektioner
--   Matrix-tema (mörk design)
-
-Fungerar på: - Mobil - Surfplatta - Desktop
-
-------------------------------------------------------------------------
-
-## Språksystem
-
-Standard: Svenska
-
--   Alla UI-texter växlar mellan svenska och engelska
--   AI-analysen följer valt språk
--   Sessionsbaserad språkhantering
--   Ingen duplicering av templates
-
-------------------------------------------------------------------------
-
-## Teknisk Arkitektur
-
-Backend: - Flask - OpenAI API - Flask-Limiter - python-docx - Gunicorn
-
-Frontend: - Jinja2 templates - Matrix CSS-tema - Kollapsbara sektioner -
-JavaScript-animationer
-
-Deployment: - Railway-redo - Procfile inkluderad - runtime.txt
-definierad
+1.  Extractor Agent
+    -   Tolkar CV och jobbannons\
+    -   Skapar strukturerad Job Map och Candidate Map
+2.  Recruiter Agent
+    -   Genererar matchningspoäng (0--100)\
+    -   Identifierar viktigaste kompetensluckorna\
+    -   Upptäcker anställningshinder
+3.  Optimizer Agent
+    -   Skriver om avsnittet Professional Experience enligt Google
+        X-Y-Z\
+    -   Integrerar saknade nyckelord\
+    -   Undviker påhittade mätvärden
+4.  ATS Agent
+    -   Simulerar Workday / SuccessFactors\
+    -   Flaggar strukturella risker\
+    -   Skapar en ATS-optimerad inlämningsversion
+5.  Iterationsloop
+    -   Kör om matchningsanalys efter optimering\
+    -   Visar förbättring (delta)
+6.  Interview Agent
+    -   Tekniska djupfrågor\
+    -   HR- och värderingsfrågor\
+    -   Strategiska kandidatfrågor
+7.  Analyslager
+    -   Genomsnittlig poängförbättring\
+    -   Historik över körningar\
+    -   Prestandaspårning
 
 ------------------------------------------------------------------------
 
-## Projektstruktur
+Teknikstack
 
-ai-job-hunt-v5.4-mobile/ │ ├── app.py ├── agents.py ├── openai_client.py
-├── report_generator.py ├── translations.py │ ├── templates/ │ ├──
-index.html │ └── dashboard.html │ ├── static/ │ └── styles.css │ ├──
-requirements.txt ├── Procfile ├── runtime.txt └── README.md
+Backend: - Flask 3 - SQLAlchemy - Flask-Login - OpenAI Responses API -
+Gunicorn
+
+Databas: - SQLite (lokal utveckling) - PostgreSQL (Railway produktion)
+
+Distribution: - Railway (Nixpacks build) - Gunicorn WSGI-server
 
 ------------------------------------------------------------------------
 
-## Lokal Installation
+Installation (Lokal utveckling)
 
-1.  Skapa virtuell miljö
+1.  Klona repository
 
-python -m venv .venv\
-source .venv/bin/activate
+git clone `<din-repo-url>`{=html} cd ai-job-hunting-system
 
-Windows:
+2.  Skapa virtuell miljö
 
-.venv`\Scripts`{=tex}`\activate  `{=tex}
+python -m venv .venv source .venv/bin/activate \# Windows:
+.venv`\Scripts`{=tex}`\activate`{=tex}
 
-2.  Installera beroenden
+3.  Installera beroenden
 
 pip install -r requirements.txt
 
-3.  Skapa .env-fil
+4.  Konfigurera miljövariabler
 
-OPENAI_API_KEY=din_api_nyckel\
-OPENAI_MODEL=gpt-4.1-mini\
-SECRET_KEY=byt_till_något_säkert
+Kopiera miljöfilen:
 
-4.  Starta applikationen
+cp .env.example .env
 
-flask --app app run
+Redigera `.env`:
 
-Öppna:
+OPENAI_API_KEY=din_nyckel SECRET_KEY=slumpmässig_säker_sträng
 
-http://127.0.0.1:5000
+5.  Starta applikationen
 
-------------------------------------------------------------------------
+export FLASK_APP=app \# Windows: set FLASK_APP=app flask run
 
-## Railway Deployment
-
-1.  Ladda upp projektet till GitHub\
-2.  Koppla repository till Railway\
-3.  Lägg till miljövariabler:
-    -   OPENAI_API_KEY
-    -   SECRET_KEY\
-4.  Deploya
-
-Hälsokontroll:
-
-/health
+Öppna: http://127.0.0.1:5000
 
 ------------------------------------------------------------------------
 
-## Positionering
+Produktionsdistribution (Railway)
 
-AI Job Hunt v5.4 är en:
+1.  Pusha repository till GitHub\
+2.  Skapa nytt Railway-projekt\
+3.  Distribuera från GitHub\
+4.  Lägg till PostgreSQL-plugin\
+5.  Lägg till miljövariabler:
 
--   AI-driven karriärintelligensplattform\
--   Rekryterarsimuleringsmotor\
--   Strategiskt anställningsoptimeringssystem\
--   SaaS-redo karriärverktyg
+OPENAI_API_KEY SECRET_KEY OPENAI_MODEL (valfri)
 
-Lämplig för:
-
--   Professionella individer\
--   Karriärcoacher\
--   HR-rådgivning\
--   Universitet\
--   Kommersiell SaaS-lansering
+Railway binder automatiskt till \$PORT via Gunicorn.
 
 ------------------------------------------------------------------------
+
+Funktioner
+
+-   Säker användarautentisering
+-   Permanent historik över körningar
+-   Jämförelse av matchningspoäng före/efter
+-   Klassificering av ATS-risker
+-   X-Y-Z-strukturerad omskrivning av meriter
+-   Intervjuförberedelsepaket
+-   Analysdashboard
+-   Lagring av jobbvarningspreferenser (redo för bakgrundsjobb)
+
+------------------------------------------------------------------------
+
+Säkerhetsöverväganden
+
+För produktionsmiljö bör följande övervägas:
+
+-   Kryptering eller avidentifiering av personuppgifter
+-   Retentionspolicy för lagrad data
+-   Rate limiting
+-   Övervakning och loggning
+-   HTTPS-tvingande
+-   Bakgrundsarbetare för jobbvarningar
+
+------------------------------------------------------------------------
+
+Färdplan (Nästa utvecklingssteg)
+
+-   Filuppladdning (PDF/DOCX-tolkning)
+-   Export av CV till DOCX/PDF
+-   Strukturerad JSON-validering
+-   Stripe-prenumerationshantering
+-   Administrativ analys
+-   Enterprise multi-tenant-läge
+
+------------------------------------------------------------------------
+
+Licens
+
+Privat / Intern användning\
+(Justera vid kommersiell distribution)
+
+------------------------------------------------------------------------
+
+Författare
+
+AI Job Hunting System --- Version 6\
+Multi-Agent Hireability Optimization Engine
 
 ## Licens
 
