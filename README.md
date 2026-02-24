@@ -1,186 +1,250 @@
 # KarriarSverigeAI
 
-AI Job Hunting System --- Version 6 (Produktionsversion)
+# KarriarSverigeAI – Enterprise ATS Intelligence Platform
 
-En AI-driven plattform för jobbsökningsoptimering byggd med Flask,
-OpenAI och PostgreSQL (Railway-redo).
+AI-powered job application intelligence system with recruiter simulation, ATS screening logic, deterministic hard-gate enforcement, and hireability scoring.
 
-Version 6 innehåller: - Full multi-agent-pipeline - Iterativ
-poängsättningsloop - ATS-simulering - Intervjuförberedelsemotor -
-Webbgränssnitt med autentisering - Analysdashboard -
-Produktionsdistribution via Railway
+Production-ready for GitHub and Railway deployment.
 
-------------------------------------------------------------------------
+---
 
-Översikt
+## Overview
 
-AI Job Hunting System simulerar den verkliga rekryteringsprocessen:
+KarriarSverigeAI simulates how real automated hiring systems (SmartRecruiters, Workday-style ATS) screen candidates.
 
-1.  Applicant Tracking System (ATS)
-2.  Senior rekryterargranskning
-3.  Bedömning av rekryterande chef
-4.  HR- och kulturmatchning
-5.  Kandidatens strategiska beslutsstöd
+This platform combines:
 
-Systemet optimerar CV:n både för maskinläsbarhet och mänsklig
-trovärdighet.
+- Automated Hard Gate detection (citizenship, clearance, etc.)
+- ATS ranking simulation
+- Recruiter match scoring
+- CV optimization
+- Interview preparation
+- Culture alignment analysis
+- Deterministic score enforcement
 
-------------------------------------------------------------------------
+This version is enterprise-aligned and production-stable.
 
-Kärnarkitektur (V6)
+---
 
-Multi-agent-flöde
+## Core Capabilities
 
-1.  Extractor Agent
-    -   Tolkar CV och jobbannons\
-    -   Skapar strukturerad Job Map och Candidate Map
-2.  Recruiter Agent
-    -   Genererar matchningspoäng (0--100)\
-    -   Identifierar viktigaste kompetensluckorna\
-    -   Upptäcker anställningshinder
-3.  Optimizer Agent
-    -   Skriver om avsnittet Professional Experience enligt Google
-        X-Y-Z\
-    -   Integrerar saknade nyckelord\
-    -   Undviker påhittade mätvärden
-4.  ATS Agent
-    -   Simulerar Workday / SuccessFactors\
-    -   Flaggar strukturella risker\
-    -   Skapar en ATS-optimerad inlämningsversion
-5.  Iterationsloop
-    -   Kör om matchningsanalys efter optimering\
-    -   Visar förbättring (delta)
-6.  Interview Agent
-    -   Tekniska djupfrågor\
-    -   HR- och värderingsfrågor\
-    -   Strategiska kandidatfrågor
-7.  Analyslager
-    -   Genomsnittlig poängförbättring\
-    -   Historik över körningar\
-    -   Prestandaspårning
+### 1. URL-Based Job Extraction
 
-------------------------------------------------------------------------
+- Enter job posting URL
+- Automatic HTML cleaning
+- Graceful fallback if blocked
+- No copy/paste required
 
-Teknikstack
+---
 
-Backend: - Flask 3 - SQLAlchemy - Flask-Login - OpenAI Responses API -
-Gunicorn
+### 2. Hard Gate Intelligence (Enterprise Feature)
 
-Databas: - SQLite (lokal utveckling) - PostgreSQL (Railway produktion)
+Automatically detects from job posting:
 
-Distribution: - Railway (Nixpacks build) - Gunicorn WSGI-server
+- Citizenship requirements
+- Right-to-work constraints
+- No sponsorship clauses
+- Security clearance requirements
+- Required degrees
+- Required certifications
+- Location constraints
 
-------------------------------------------------------------------------
+Each gate includes:
 
-Installation (Lokal utveckling)
+- Evidence quote from job posting
+- CV evidence status (satisfied / unclear / missing)
 
-1.  Klona repository
+#### Deterministic Score Caps
 
-git clone `<din-repo-url>`{=html} cd ai-job-hunting-system
+Hard gates override scoring:
 
-2.  Skapa virtuell miljö
+- fail → score capped at 25
+- risk → score capped at 45
+- clear → no cap
 
-python -m venv .venv source .venv/bin/activate \# Windows:
-.venv`\Scripts`{=tex}`\activate`{=tex}
+This mirrors real ATS knockout logic.
 
-3.  Installera beroenden
+---
 
-pip install -r requirements.txt
+### 3. Recruiter Simulation
 
-4.  Konfigurera miljövariabler
+Simulates real recruiter evaluation:
 
-Kopiera miljöfilen:
+- Match score (0–100)
+- Gap analysis
+- Blocker detection
+- Seniority alignment review
 
-cp .env.example .env
+Score respects hard gate enforcement.
 
-Redigera `.env`:
+---
 
-OPENAI_API_KEY=din_nyckel SECRET_KEY=slumpmässig_säker_sträng
+### 4. ATS Audit (SmartRecruiters-Style Simulation)
 
-5.  Starta applikationen
+Includes:
 
-export FLASK_APP=app \# Windows: set FLASK_APP=app flask run
+- Eligibility & compliance analysis
+- Parsing risks (formatting, structure, dates)
+- Screening risks (keywords, experience alignment)
+- Actionable top fixes
+- Structured ranking breakdown
 
-Öppna: http://127.0.0.1:5000
+---
 
-------------------------------------------------------------------------
+### 5. ATS Submission CV Generator
 
-Produktionsdistribution (Railway)
+Generates ATS-ready version:
 
-1.  Pusha repository till GitHub\
-2.  Skapa nytt Railway-projekt\
-3.  Distribuera från GitHub\
-4.  Lägg till PostgreSQL-plugin\
-5.  Lägg till miljövariabler:
+- One-column structure
+- Standard headings
+- No tables/icons
+- Keyword-aligned formatting
+- Consistent dates
+- Certification section (if present)
 
-OPENAI_API_KEY SECRET_KEY OPENAI_MODEL (valfri)
+---
 
-Railway binder automatiskt till \$PORT via Gunicorn.
+### 6. Hireability Score
 
-------------------------------------------------------------------------
+- Numeric score (0–100)
+- Deterministically capped by hard gates
+- Consistent across modules
 
-Funktioner
+---
 
--   Säker användarautentisering
--   Permanent historik över körningar
--   Jämförelse av matchningspoäng före/efter
--   Klassificering av ATS-risker
--   X-Y-Z-strukturerad omskrivning av meriter
--   Intervjuförberedelsepaket
--   Analysdashboard
--   Lagring av jobbvarningspreferenser (redo för bakgrundsjobb)
+### 7. Interview Preparation Pack
 
-------------------------------------------------------------------------
+Generates:
 
-Säkerhetsöverväganden
+- Technical questions
+- HR questions
+- Strategic questions
+- Hiring manager perspective
 
-För produktionsmiljö bör följande övervägas:
+---
 
--   Kryptering eller avidentifiering av personuppgifter
--   Retentionspolicy för lagrad data
--   Rate limiting
--   Övervakning och loggning
--   HTTPS-tvingande
--   Bakgrundsarbetare för jobbvarningar
+### 8. Recruiter Psychology Module
 
-------------------------------------------------------------------------
+Simulates:
 
-Färdplan (Nästa utvecklingssteg)
+- Recruiter first impression
+- Risk perception
+- Promotion readiness
+- Narrative clarity
 
--   Filuppladdning (PDF/DOCX-tolkning)
--   Export av CV till DOCX/PDF
--   Strukturerad JSON-validering
--   Stripe-prenumerationshantering
--   Administrativ analys
--   Enterprise multi-tenant-läge
+---
 
-------------------------------------------------------------------------
+### 9. Culture & Employee Review Analysis
 
-Licens
+If provided:
 
-Privat / Intern användning\
-(Justera vid kommersiell distribution)
+- Compare official employer branding
+- Cross-analyze employee review themes
+- Identify alignment risks
+- Highlight cultural red flags
 
-------------------------------------------------------------------------
+---
 
-Författare
+### 10. PDF Export
 
-AI Job Hunting System --- Version 6\
-Multi-Agent Hireability Optimization Engine
+Downloadable structured report including:
 
-## Licens
+- Hard Gate results
+- Scores
+- ATS audit
+- CV optimization
+- Interview pack
 
-Intern eller kommersiell användning enligt konfiguration.\
-Lägg till separat licensfil vid offentlig publicering.
+---
 
+## Architecture
 
-## Job posting input (URL)
-This version expects the job posting as a URL (not pasted text). The app fetches and cleans the page automatically.
+- Stateless (no database required)
+- Access Gate (password protected)
+- Rate limiting on analysis endpoint
+- Health endpoint (/health)
+- Strict JSON validation for hard gates
+- Deterministic Python-based enforcement layer
 
+---
 
-## Railway deployment
-This repo includes Procfile and railway.json for Railway. Set environment variables OPENAI_API_KEY and SECRET_KEY.
+## Project Structure
 
+KarriarSverigeAI-main/
 
-## ATS hard gates (citizenship/clearance/sponsorship)
-The ATS intelligence now extracts eligibility and knockout requirements from the job posting (citizenship, right-to-work, security clearance, no sponsorship, required degree/certifications, location constraints). It outputs evidence quotes and marks each item as satisfied/unclear/missing based on explicit CV evidence.
+├── app.py  
+├── agents.py  
+├── openai_client.py  
+├── job_fetcher.py  
+├── templates/  
+├── static/  
+├── requirements.txt  
+├── Procfile  
+├── railway.json  
+└── .env.example  
+
+---
+
+## Environment Variables
+
+Set in Railway or locally:
+
+OPENAI_API_KEY=your_openai_key  
+SECRET_KEY=random_secure_string  
+ACCESS_PASSWORD=your_access_gate_password  
+
+Optional:
+
+OPENAI_MODEL=gpt-4.1-mini  
+
+---
+
+## Local Development
+
+1. Create virtual environment  
+   python -m venv venv  
+   source venv/bin/activate  
+
+2. Install dependencies  
+   pip install -r requirements.txt  
+
+3. Create .env from .env.example  
+
+4. Run  
+   python app.py  
+
+---
+
+## Railway Deployment
+
+1. Push repository to GitHub  
+2. Create new Railway project  
+3. Deploy from GitHub  
+4. Set environment variables  
+5. Railway auto-detects Procfile  
+
+Production ready.
+
+---
+
+## System Design Philosophy
+
+This system does not attempt to bypass hiring requirements.
+
+It:
+
+- Detects eligibility gates
+- Enforces deterministic caps
+- Simulates ATS ranking behavior
+- Improves ranking within valid constraints
+- Provides transparent screening logic
+
+This mirrors real enterprise hiring systems.
+
+---
+
+## Version
+
+Enterprise Aligned Version  
+Hard Gate–Aware ATS Intelligence  
+Production Stable  
