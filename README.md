@@ -180,3 +180,7 @@ This version expects the job posting as a URL (not pasted text). The app fetches
 
 ## Railway deployment
 This repo includes Procfile and railway.json for Railway. Set environment variables OPENAI_API_KEY and SECRET_KEY.
+
+
+## ATS hard gates (citizenship/clearance/sponsorship)
+The ATS intelligence now extracts eligibility and knockout requirements from the job posting (citizenship, right-to-work, security clearance, no sponsorship, required degree/certifications, location constraints). It outputs evidence quotes and marks each item as satisfied/unclear/missing based on explicit CV evidence.
