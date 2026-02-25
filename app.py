@@ -373,7 +373,7 @@ def download_pdf():
 
 
 @app.route("/run", methods=["POST"])
-@limiter.limit("15 per hour")
+@limiter.limit("30 per hour")
 def run():
     lang = request.form.get("lang", "en")
     t = get_t(lang)
